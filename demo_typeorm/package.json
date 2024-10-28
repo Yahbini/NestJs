@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
+  },
+  "type": "module",
+  "devDependencies": {
+    "tsx": "^4.19.2"
+  }
+}

@@ -15,7 +15,7 @@ import { diskStorage } from 'multer';
 import { v4 as uuidv4 } from 'uuid';
 import { extname } from 'path';
 
-@UseInterceptors(ClassSerializerInterceptor) // biến doi693s tượng thành json thì gọi lại ở class product @Transform(dob => moment(dob.value).format('DD/MM/YYYY'))
+@UseInterceptors(ClassSerializerInterceptor) // biến đối tượng thành json thì gọi lại ở class product @Transform(dob => moment(dob.value).format('DD/MM/YYYY'))
 @Controller('api/product')
 export class ProductController {
   product: Product[];

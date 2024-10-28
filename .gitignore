@@ -1,0 +1,4 @@
+# compiled output
+/dist
+/demo_typeorm/node_modules
+/build
