@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Oct 28, 2024 at 08:03 AM
+-- Generation Time: Oct 28, 2024 at 12:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -58,6 +58,16 @@ CREATE TABLE `category` (
   `name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`) VALUES
+(1, 'Category 1'),
+(2, 'Category 2'),
+(3, 'Category 3'),
+(4, 'Category 4');
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +112,17 @@ CREATE TABLE `product` (
   `created` date NOT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `price`, `quantity`, `status`, `description`, `photo`, `created`, `category_id`) VALUES
+(1, 'Tivi', 13, 10, 1, '', 'a.png', '2024-10-28', 1),
+(2, 'Samsung', 15, 10, 0, '', 'b.png', '2024-10-28', 2),
+(3, 'Xiaomi', 10, 20, 1, '', 'b.png', '2024-10-28', 2),
+(4, 'Xiaomi', 10, 20, 1, '', 'b.png', '2024-10-28', 2),
+(5, 'Ipad', 15, 20, 1, '', 'c.png', '2024-10-28', 3);
 
 -- --------------------------------------------------------
 
@@ -178,7 +199,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `invoice`
@@ -190,7 +211,7 @@ ALTER TABLE `invoice`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `role`

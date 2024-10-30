@@ -1,10 +1,15 @@
 import { appDataSource } from "./data_source";
+import { Category } from "./entities/category.entity";
 
-// npx tsx demo1.ts
-appDataSource.initialize().then(() => {
-    console.log("success");
-    
-}).catch((e) => {
-    console.log(e);
-    
+let categoryRepository = (await appDataSource.initialize()).getRepository(
+  Category
+);
+
+let categories = await categoryRepository.find();
+console.log(`category: ${categories.length}`);
+
+categories.forEach((category) => {
+    console.log(category);
+    console.log("-----------------");
+        
 })
