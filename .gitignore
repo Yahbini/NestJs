@@ -1,4 +1,5 @@
 # compiled output
-/dist
 /demo_typeorm/node_modules
-/build
+/web-nestjs/node_modules
+/web-nestjs/dist
+
