@@ -1,35 +1,35 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
-import { Invoice } from "./invoice.entity";
-import { Product } from "./product.entity";
+import { Column, Entity, Index, JoinColumn, ManyToOne } from 'typeorm'
+import { Invoice } from './invoice.entity'
+import { Product } from './product.entity'
 
-@Index("product_id", ["productId"], {})
-@Entity("invoice_details", { schema: "nest_demo" })
+@Index('product_id', ['productId'], {})
+@Entity('invoice_details', { schema: 'nest_demo' })
 export class InvoiceDetails {
-  @Column("int", { primary: true, name: "invoice_id" })
-  invoiceId: number;
+  @Column('int', { primary: true, name: 'invoice_id' })
+  invoiceId: number
 
-  @Column("int", { primary: true, name: "product_id" })
-  productId: number;
+  @Column('int', { primary: true, name: 'product_id' })
+  productId: number
 
-  @Column("float", { name: "price", precision: 12 })
-  price: number;
+  @Column('float', { name: 'price', precision: 12 })
+  price: number
 
-  @Column("int", { name: "quantity" })
-  quantity: number;
+  @Column('int', { name: 'quantity' })
+  quantity: number
 
   @ManyToOne(() => Invoice, (invoice) => invoice.invoiceDetails, {
-    onDelete: "RESTRICT",
-    onUpdate: "RESTRICT",
+    onDelete: 'RESTRICT',
+    onUpdate: 'RESTRICT',
     lazy: true
   })
-  @JoinColumn([{ name: "invoice_id", referencedColumnName: "id" }])
-  invoice: Promise<Invoice>;
+  @JoinColumn([{ name: 'invoice_id', referencedColumnName: 'id' }])
+  invoice: Promise<Invoice>
 
   @ManyToOne(() => Product, (product) => product.invoiceDetails, {
-    onDelete: "RESTRICT",
-    onUpdate: "RESTRICT",
+    onDelete: 'RESTRICT',
+    onUpdate: 'RESTRICT',
     lazy: true
   })
-  @JoinColumn([{ name: "product_id", referencedColumnName: "id" }])
-  product: Promise<Product>;
+  @JoinColumn([{ name: 'product_id', referencedColumnName: 'id' }])
+  product: Promise<Product>
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Oct 28, 2024 at 12:11 PM
+-- Generation Time: Nov 05, 2024 at 11:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,6 +36,16 @@ CREATE TABLE `account` (
   `dob` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` (`id`, `email`, `password`, `full_name`, `stastus`, `dob`) VALUES
+(1, 'sa@gmail.com', '123', 'admin', 1, '0000-00-00'),
+(2, 'a@gmail.com', '123', 'anh', 1, '0000-00-00'),
+(3, 'b@gmail.com', '123', 'bbbbb', 1, '0000-00-00'),
+(13, 'acc1@gmail.com', '$2b$10$Gda2KT8XjKT99a27YoV6xeOZ7qLskgb0yB4dgZ1LHgr.Voe7jE1sy', 'Ryan', 1, '2004-03-12');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +56,19 @@ CREATE TABLE `account_role` (
   `account_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `account_role`
+--
+
+INSERT INTO `account_role` (`account_id`, `role_id`) VALUES
+(1, 1),
+(1, 4),
+(1, 5),
+(2, 2),
+(3, 3),
+(13, 4),
+(13, 5);
 
 -- --------------------------------------------------------
 
@@ -66,7 +89,8 @@ INSERT INTO `category` (`id`, `name`) VALUES
 (1, 'Category 1'),
 (2, 'Category 2'),
 (3, 'Category 3'),
-(4, 'Category 4');
+(4, 'Category 4'),
+(5, 'ABC');
 
 -- --------------------------------------------------------
 
@@ -122,7 +146,9 @@ INSERT INTO `product` (`id`, `name`, `price`, `quantity`, `status`, `description
 (2, 'Samsung', 15, 10, 0, '', 'b.png', '2024-10-28', 2),
 (3, 'Xiaomi', 10, 20, 1, '', 'b.png', '2024-10-28', 2),
 (4, 'Xiaomi', 10, 20, 1, '', 'b.png', '2024-10-28', 2),
-(5, 'Ipad', 15, 20, 1, '', 'c.png', '2024-10-28', 3);
+(5, 'Ipad', 15, 20, 1, '', 'c.png', '2024-10-28', 3),
+(6, 'phone3', 32.1, 12, 1, '', 'a.png', '2030-10-24', 1),
+(7, 'phone2', 32.1, 12, 1, '', 'a.png', '2030-10-24', 1);
 
 -- --------------------------------------------------------
 
@@ -136,6 +162,17 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'Admin'),
+(2, 'Staff'),
+(3, 'Manager'),
+(4, 'Role 4'),
+(5, 'Role 4');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -143,7 +180,8 @@ CREATE TABLE `role` (
 -- Indexes for table `account`
 --
 ALTER TABLE `account`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `account_role`
@@ -193,13 +231,13 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `invoice`
@@ -211,13 +249,13 @@ ALTER TABLE `invoice`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

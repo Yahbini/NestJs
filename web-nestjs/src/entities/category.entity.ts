@@ -1,14 +1,14 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Product } from "./product.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { Product } from './product.entity'
 
-@Entity("category", { schema: "nest_demo" })
+@Entity('category', { schema: 'nest_demo' })
 export class Category {
-  @PrimaryGeneratedColumn({ type: "int", name: "id" })
-  id: number;
+  @PrimaryGeneratedColumn({ type: 'int', name: 'id' })
+  id: number
 
-  @Column("varchar", { name: "name", length: 250 })
-  name: string;
+  @Column('varchar', { name: 'name', length: 250 })
+  name: string
 
-  @OneToMany(() => Product, (product) => product.category, {lazy: true})
-  products: Promise<Product[]>;
+  @OneToMany(() => Product, (product) => product.category, { lazy: true })
+  products: Promise<Product[]>
 }
