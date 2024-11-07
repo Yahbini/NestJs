@@ -63,4 +63,24 @@ export class ProductService {
       })
       .getMany()
   }
+
+  async save(product: Product): Promise<boolean> {
+    try {
+      await this.productRepository.save(product)
+      return true
+    } catch (ex) {
+      console.log(ex)
+      return false
+    }
+  }
+
+  async delete(id: number): Promise<boolean> {
+    try {
+      const result = await this.productRepository.delete(id)
+      return result.affected > 0
+    } catch (ex) {
+      console.log(ex)
+      return false
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
 import { ProductService } from './product.service'
 import { Product } from '../entities/product.entity'
 
@@ -40,4 +40,27 @@ export class ProductController {
   findByDate(@Param('from') from: string, @Param('to') to: string): Promise<Product[]> {
     return this.productService.findByDate(from, to)
   }
+
+  @Post('create')
+  async create(@Body() product: Product): Promise<any> {
+    return {
+      result: await this.productService.save(product)
+    }
+  }
+
+  @Put('update')
+  async update(@Body() product: Product): Promise<any> {
+    return {
+      result: await this.productService.save(product)
+    }
+  }
+
+  @Delete('delete/:id')
+  async delete(@Param('id') id: number) {
+    return {
+      result: await this.productService.delete(id)
+    }
+  }
+
+ 
 }
